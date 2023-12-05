@@ -19,20 +19,31 @@
 		</style>
 		<script>
 			function	run()
-			{
-				var v_i = document.getElementById("v_i").value;
-				var a_y = document.getElementById("a_y").value;
-				var angle = Math.PI / 4; //45 degrees
-				var v_x = v_i * Math.sin(angle);
-				var v_y = v_x;
-				var y = 0; 
-				var y_0 = document.getElementById("y_0").value;
-				//a is y_0, b is init.velocity, c is 1/2 acceleration
-				var Dt = ((-v_y) - Math.sqrt((v_y**2) - (2 * y_0 * a_y))) / a_y;
-				var x = v_x * Dt;
-				//alert(v_y**2);
-				document.getElementById("output").innerHTML = "Distance traveled: " + x;
-			}
+				{
+					var v_i = document.getElementById("v_i").value;
+					var a_y = document.getElementById("a_y").value;
+					var y_0 = document.getElementById("y_0").value;
+					if (a_y == null || a_y == "" || v_i == null || v_i == "" || y_0 == "" || y_0 == null)
+					{
+						alert("Please fill out all fields.");
+					}
+					else
+					{
+						var v_i = document.getElementById("v_i").value;
+						var a_y = document.getElementById("a_y").value;
+						var y_0 = document.getElementById("y_0").value;
+						//alert(v_i, a_y, y_0);
+						var angle = Math.PI / 4; //45 degrees
+						var v_x = v_i * Math.sin(angle);
+						var v_y = v_x;
+						var y = 0; 
+						//a is y_0, b is init.velocity, c is 1/2 acceleration
+						var Dt = ((-v_y) - Math.sqrt((v_y**2) - (2 * y_0 * a_y))) / a_y;
+						var x = v_x * Dt;
+						//alert(v_y**2);
+						document.getElementById("output").innerHTML = "Distance traveled: " + x;
+					}
+				}
 		</script>
 	</head>
 	<body>
